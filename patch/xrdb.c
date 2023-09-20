@@ -132,6 +132,7 @@ xrdb(const Arg *arg)
 		#endif // BAR_ALPHA_PATCH
 		ColCount
 		);
-	arrange(NULL);
 	focus(NULL);
+	arrange(NULL);
 }
+

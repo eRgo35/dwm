@@ -151,9 +151,6 @@
 #if FOCUSDIR_PATCH
 #include "focusdir.c"
 #endif
-#if FOCUSFOLLOWMOUSE_PATCH
-#include "focusfollowmouse.c"
-#endif
 #if FOCUSMASTER_PATCH
 #include "focusmaster.c"
 #endif
@@ -312,9 +309,6 @@
 #endif
 #if TOGGLEFULLSCREEN_PATCH
 #include "togglefullscreen.c"
-#endif
-#if TOGGLETOPBAR_PATCH
-#include "toggletopbar.c"
 #endif
 #if TRANSFER_PATCH
 #include "transfer.c"

@@ -30,7 +30,6 @@ case $# in
 	transferall) ;&
 	togglealttag) ;&
 	togglebar) ;&
-	toggletopbar) ;&
 	togglefloating) ;&
 	togglefullscreen) ;&
 	fullscreen) ;&

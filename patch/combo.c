@@ -22,8 +22,8 @@ combotag(const Arg *arg)
 			combo = 1;
 			selmon->sel->tags = arg->ui & TAGMASK;
 		}
-		arrange(selmon);
 		focus(NULL);
+		arrange(selmon);
 	}
 }
 

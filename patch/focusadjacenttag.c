@@ -6,8 +6,8 @@ tagtoleft(const Arg *arg)
 	&& __builtin_popcount(selmon->tagset[selmon->seltags] & MASK) == 1
 	&& selmon->tagset[selmon->seltags] > 1) {
 		selmon->sel->tags >>= 1;
-		arrange(selmon);
 		focus(NULL);
+		arrange(selmon);
 	}
 }
 
@@ -19,8 +19,8 @@ tagtoright(const Arg *arg)
 	&& __builtin_popcount(selmon->tagset[selmon->seltags] & MASK) == 1
 	&& selmon->tagset[selmon->seltags] & (MASK >> 1)) {
 		selmon->sel->tags <<= 1;
-		arrange(selmon);
 		focus(NULL);
+		arrange(selmon);
 	}
 }
 

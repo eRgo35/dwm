@@ -69,7 +69,7 @@ tagswapmon(const Arg *arg)
 		}
 	}
 
-	arrange(NULL);
 	focus(NULL);
+	arrange(NULL);
 }
 
