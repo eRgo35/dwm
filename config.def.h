@@ -213,10 +213,17 @@ static const char *upbrt[] = {"xbacklight", "-inc", "5", NULL};
 static const char *displ[] = {"arandr", NULL};
 static const char *wlan[] = {"kitty", "-e", "nmtui", NULL};
 static const char *tools[] = {"lxappearance"};
-static const char *search[] = {"rofi", "-show", "drun", NULL};
+// static const char *search[] = {"rofi", "-show", "drun", NULL};
 // static const char *launcha[] = {alttabstart};
 static const char *explorer[] = {"nemo", NULL};
 static const char *locksession[] = {"loginctl", "lock-session", NULL};
+
+static const char *websearch[] = {".config/rofi/scripts/websearch", NULL};
+static const char *emoji[] = {".config/rofi/scripts/emoji", NULL};
+static const char *launcher[] = {".config/rofi/scripts/launcher", NULL};
+static const char *wallpaper[] = {".config/rofi/scripts/wallpaper", NULL};
+static const char *powermenu[] = {".config/rofi/scripts/powermenu", NULL};
+
 
 #if RENAMED_SCRATCHPADS_PATCH
 static char scratchselfgcolor[]          = "#FFF7D4";
@@ -864,7 +871,7 @@ static const char *xkb_layouts[]  = {
 #if !NODMENU_PATCH
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 #endif // NODMENU_PATCH
-static const char *rofidruncmd[] = {"rofi", "-show", "drun", "-modi", "drun,run,window,calc", "-no-show-match", "-no-sort", "-automatic-save-to-history", NULL};
+// static const char *rofidruncmd[] = {"rofi", "-show", "drun", "-modi", "drun,run,window,calc", "-no-show-match", "-no-sort", "-automatic-save-to-history", NULL};
 static const char *dmenucmd[] = {
 	"dmenu_run",
 	#if !NODMENU_PATCH
@@ -918,7 +925,7 @@ static const Key keys[] = {
   {0, XF86XK_Display, spawn, {.v = displ}},
   {0, XF86XK_WLAN, spawn, {.v = wlan}},
   {0, XF86XK_Tools, spawn, {.v = tools}},
-  {0, XF86XK_Search, spawn, {.v = search}},
+  // {0, XF86XK_Search, spawn, {.v = search}},
   {0, XF86XK_LaunchA, alttabstart, {0}},
   {0, XF86XK_Explorer, spawn, {.v = explorer}},
 	{ MODKEY|Mod1Mask,              XK_F1,         spawn,                  {.v = upvol}},
@@ -927,6 +934,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
 	{ 0,                            XK_Print,      spawn,                  {.v = prtscrcmd} },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = prtscrcmd} },
+	{ MODKEY,                       XK_space,      spawn,                  {.v = websearch} },
+	{ MODKEY,                       XK_semicolon,  spawn,                  {.v = emoji} },
+	{ MODKEY,                       XK_z,          spawn,                  {.v = launcher} },
+	{ MODKEY,                       XK_w,          spawn,                  {.v = wallpaper} },
+	{ MODKEY,                       XK_x,          spawn,                  {.v = powermenu} },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
@@ -1115,7 +1127,7 @@ static const Key keys[] = {
 	{ MODKEY|Mod5Mask|Mod1Mask,     XK_Tab,        rotatelayoutaxis,       {.i = -4 } },   /* flextile, 4 = secondary stack axis */
 	{ MODKEY|ControlMask,           XK_Return,     mirrorlayout,           {0} },          /* flextile, flip master and stack areas */
 	#endif // FLEXTILE_DELUXE_LAYOUT
-	{ MODKEY,                       XK_space,      spawn,                  {.v = rofidruncmd}},
+	// { MODKEY,                       XK_space,      spawn,                  {.v = rofidruncmd}},
 	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
 	#if MAXIMIZE_PATCH
 	{ MODKEY|ControlMask|ShiftMask, XK_h,          togglehorizontalmax,    {0} },
