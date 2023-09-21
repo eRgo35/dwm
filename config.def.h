@@ -211,7 +211,7 @@ static const char *mutemic[] = {"/usr/bin/pactl", "set-source-mute", "0", "toggl
 static const char *downbrt[] = {"xbacklight", "-dec", "5", NULL};
 static const char *upbrt[] = {"xbacklight", "-inc", "5", NULL};
 static const char *displ[] = {"arandr", NULL};
-static const char *wlan[] = {"alacritty", "-e", "nmtui", NULL};
+static const char *wlan[] = {"kitty", "-e", "nmtui", NULL};
 static const char *tools[] = {"lxappearance"};
 static const char *search[] = {"rofi", "-show", "drun", NULL};
 // static const char *launcha[] = {alttabstart};
@@ -880,7 +880,8 @@ static const char *dmenucmd[] = {
 	#endif // BAR_DMENUMATCHTOP_PATCH
 	NULL
 };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
+static const char *prtscrcmd[] = { "flameshot", "gui", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -924,6 +925,8 @@ static const Key keys[] = {
 	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = downvol}},
 	{ MODKEY,                       XK_n,          spawn,                  {.v = explorer} },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
+	{ 0,                            XK_Print,      spawn,                  {.v = prtscrcmd} },
+	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = prtscrcmd} },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
