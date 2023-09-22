@@ -934,9 +934,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
 	{ 0,                            XK_Print,      spawn,                  {.v = prtscrcmd} },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = prtscrcmd} },
-	{ MODKEY,                       XK_space,      spawn,                  {.v = websearch} },
+	{ MODKEY,                       XK_z,          spawn,                  {.v = websearch} },
 	{ MODKEY,                       XK_semicolon,  spawn,                  {.v = emoji} },
-	{ MODKEY,                       XK_z,          spawn,                  {.v = launcher} },
+	{ MODKEY,                       XK_space,      spawn,                  {.v = launcher} },
 	{ MODKEY,                       XK_w,          spawn,                  {.v = wallpaper} },
 	{ MODKEY,                       XK_x,          spawn,                  {.v = powermenu} },
 	#if KEYMODES_PATCH

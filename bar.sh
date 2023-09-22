@@ -1,5 +1,36 @@
 #!/bin/bash
 
+function lighten_color() {
+  offset=20
+
+  hex_color=$1
+  hex_color=${hex_color:1}
+
+  red=${hex_color:0:2}
+  green=${hex_color:2:2}
+  blue=${hex_color:4:2}
+
+  red_dec=$(printf "%d" 0x$red)
+  green_dec=$(printf "%d" 0x$green)
+  blue_dec=$(printf "%d" 0x$blue)
+
+  if [[ $red_dec -lt 128 ]]; then
+    red_dec_l=$((red_dec+offset))
+    green_dec_l=$((green_dec+offset))
+    blue_dec_l=$((blue_dec+offset))
+  else
+    red_dec_l=$((red_dec-offset))
+    green_dec_l=$((green_dec-offset))
+    blue_dec_l=$((blue_dec-offset))
+  fi
+
+  red=$(printf "%02X" $red_dec_l)
+  green=$(printf "%02X" $green_dec_l)
+  blue=$(printf "%02X" $blue_dec_l)
+
+  echo "#$red$green$blue"
+}
+
 # ^c$var^ = fg color
 # ^b$var^ = bg color
 
@@ -9,6 +40,7 @@ interval=0
 # . ~/.config/bar_themes/onedark
 
 # colors
+. ~/.cache/wal/colors.sh
 
 rosewater=#f4dbd6
 flamingo=#f0c6c6
@@ -37,6 +69,10 @@ base=#24273a
 mantle=#1e2030
 crust=#181926
 
+background0=$(lighten_color $background)
+background1=$(lighten_color $background0)
+background2=$(lighten_color $background1)
+
 pulse () {
   VOL=$(pamixer --get-volume)
   STATE=$(pamixer --get-mute)
@@ -57,8 +93,8 @@ pulse () {
 cpu() {
   cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-  printf "^c$crust^ ^b$yellow^ 󰇄 "
-  printf "^c$crust^ ^b$yellow^$cpu_val"
+  printf "^c$background^ ^b$yellow^ 󰇄 "
+  printf "^c$background^ ^b$yellow^$cpu_val"
 }
 
 battery() {
@@ -78,14 +114,14 @@ brightness() {
 }
 
 mem() {
-  printf "^c$crust^^b$green^  "
-  printf "^c$crust^^b$green^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+  printf "^c$background^^b$green^  "
+  printf "^c$background^^b$green^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 wlan() {
 	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
-	up) printf "^c$crust^ ^b$blue^ 󰤨 ^c$crust^ ^b$blue^Connected" ;;
-	down) printf "^c$crust^ ^b$blue^ 󰤭 ^c$crust^ ^b$blue^Disconnected" ;;
+	up) printf "^c$background^ ^b$blue^ 󰤨 ^c$background^ ^b$blue^Connected" ;;
+	down) printf "^c$background^ ^b$blue^ 󰤭 ^c$background^ ^b$blue^Disconnected" ;;
 	esac
 }
 
@@ -99,9 +135,9 @@ today() {
 
 net() {
   if nc -zw1 google.com 443; then
-    printf "^c$crust^^b$green^  i  "
+    printf "^c$background^^b$green^  i  "
   else
-    printf "^c$crust^^b$red^  !  "
+    printf "^c$background^^b$red^  !  "
   fi
 }
 
@@ -113,9 +149,9 @@ while true; do
   # sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
   # sleep 1 && xsetroot -name "$(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
   if hash dockd 2>/dev/null; then
-    sleep 1 && xsetroot -name "^c$text^^b$surface0^  $(brightness)  ^b$base^  $(battery)  $(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
+    sleep 1 && xsetroot -name "^c$foreground^^b$background1^  $(brightness)  ^b$background0^  $(battery)  $(net)^c$foreground^^b$background0^  $(today)  ^b$background1^  $(clock)  ^b$background2^  $(pulse)  "
   else
-    sleep 1 && xsetroot -name "^c$text^$(net)^c$text^^b$base^  $(today)  ^b$surface0^  $(clock)  ^b$surface1^  $(pulse)  "
+    sleep 1 && xsetroot -name "^c$foreground^$(net)^c$foreground^^b$background0^  $(today)  ^b$background1^  $(clock)  ^b$background2^  $(pulse)  "
   fi
 
 done
