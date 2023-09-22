@@ -222,6 +222,7 @@ static const char *websearch[] = {".config/rofi/scripts/websearch", NULL};
 static const char *emoji[] = {".config/rofi/scripts/emoji", NULL};
 static const char *launcher[] = {".config/rofi/scripts/launcher", NULL};
 static const char *wallpaper[] = {".config/rofi/scripts/wallpaper", NULL};
+static const char *theme[] = {".config/rofi/scripts/theme", NULL};
 static const char *powermenu[] = {".config/rofi/scripts/powermenu", NULL};
 
 
@@ -938,6 +939,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_semicolon,  spawn,                  {.v = emoji} },
 	{ MODKEY,                       XK_space,      spawn,                  {.v = launcher} },
 	{ MODKEY,                       XK_w,          spawn,                  {.v = wallpaper} },
+	{ MODKEY,                       XK_e,          spawn,                  {.v = theme} },
 	{ MODKEY,                       XK_x,          spawn,                  {.v = powermenu} },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
