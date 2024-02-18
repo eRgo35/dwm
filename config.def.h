@@ -218,11 +218,11 @@ static const char *tools[] = {"lxappearance"};
 static const char *explorer[] = {"nemo", NULL};
 static const char *locksession[] = {"loginctl", "lock-session", NULL};
 
-static const char *websearch[] = {".config/rofi/scripts/websearch", NULL};
+// static const char *websearch[] = {".config/rofi/scripts/websearch", NULL};
 static const char *emoji[] = {".config/rofi/scripts/emoji", NULL};
 static const char *launcher[] = {".config/rofi/scripts/launcher", NULL};
-static const char *wallpaper[] = {".config/rofi/scripts/wallpaper", NULL};
-static const char *theme[] = {".config/rofi/scripts/theme", NULL};
+// static const char *wallpaper[] = {".config/rofi/scripts/wallpaper", NULL};
+// static const char *theme[] = {".config/rofi/scripts/theme", NULL};
 static const char *powermenu[] = {".config/rofi/scripts/powermenu", NULL};
 
 
@@ -427,7 +427,8 @@ static const char *const autostart[] = {
 #if RENAMED_SCRATCHPADS_PATCH
 static const char *scratchpadcmd[] = {"s", "st", "-n", "spterm", NULL};
 #elif SCRATCHPADS_PATCH
-const char *spcmd1[] = {"alacritty", "-t", "scratchpad", "--option", "window.dimensions.columns=120", "--option", "window.dimensions.lines=34", NULL };
+// const char *spcmd1[] = {"alacritty", "-t", "scratchpad", "--option", "window.dimensions.columns=120", "--option", "window.dimensions.lines=34", NULL };
+const char *spcmd1[] = {"kitty", "--name", "scratchpad", NULL };
 static Sp scratchpads[] = {
    /* name          cmd  */
    {"spterm",      spcmd1},
@@ -935,11 +936,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
 	{ 0,                            XK_Print,      spawn,                  {.v = prtscrcmd} },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = prtscrcmd} },
-	{ MODKEY,                       XK_z,          spawn,                  {.v = websearch} },
+	// { MODKEY,                       XK_z,          spawn,                  {.v = websearch} },
 	{ MODKEY,                       XK_semicolon,  spawn,                  {.v = emoji} },
 	{ MODKEY,                       XK_space,      spawn,                  {.v = launcher} },
-	{ MODKEY,                       XK_w,          spawn,                  {.v = wallpaper} },
-	{ MODKEY,                       XK_e,          spawn,                  {.v = theme} },
+	// { MODKEY,                       XK_w,          spawn,                  {.v = wallpaper} },
+	// { MODKEY,                       XK_e,          spawn,                  {.v = theme} },
 	{ MODKEY,                       XK_x,          spawn,                  {.v = powermenu} },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
