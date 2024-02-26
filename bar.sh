@@ -40,7 +40,6 @@ interval=0
 # . ~/.config/bar_themes/onedark
 
 # colors
-. ~/.cache/wal/colors.sh
 
 rosewater=#f4dbd6
 flamingo=#f0c6c6
@@ -68,6 +67,29 @@ surface0=#363a4f
 base=#24273a
 mantle=#1e2030
 crust=#181926
+
+# Special
+background=#05090e
+foreground=#c0c1c2
+cursor=#c0c1c2
+
+# Colors
+color0=#05090e
+color1=#425965
+color2=#016b86
+color3=#1f7284
+color4=#48717a
+color5=#358292
+color6=#79796b
+color7=#828486
+color8=#43464a
+color9=#597787
+color10=#028FB3
+color11=#2A99B1
+color12=#6097A3
+color13=#47AEC3
+color14=#A2A28F
+color15=#c0c1c2
 
 background0=$(lighten_color $background)
 background1=$(lighten_color $background0)
