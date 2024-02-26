@@ -158,9 +158,9 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 11";
 #else
-static const char *fonts[]               = { "Noto Nerd Font:size=11:antialias=true", "monospace:size=11:antialias=true" };
+static const char *fonts[]               = { "FiraCode Mono Nerd Font:size=11:antialias=true", "monospace:size=11:antialias=true" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "Noto Nerd Font:size=11:antialias=true";
+static const char dmenufont[]            = "FiraCode Mono Nerd Font:size=11:antialias=true";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -215,7 +215,14 @@ static const char *wlan[] = {"kitty", "-e", "nmtui", NULL};
 static const char *tools[] = {"lxappearance"};
 // static const char *search[] = {"rofi", "-show", "drun", NULL};
 // static const char *launcha[] = {alttabstart};
-static const char *explorer[] = {"nemo", NULL};
+static const char *nemo[] = {"nemo", NULL};
+static const char *explorer[] = {"kitty", "-e", "lf", NULL};
+static const char *editor[] = {"neovide", NULL};
+static const char *mail[] = {"kitty", "-e", "neomutt", NULL};
+static const char *music[] = {"kitty", "-e", "ncmpcpp", NULL};
+static const char *spotify[] = {"kitty", "-e", "ncspot", NULL};
+static const char *audio[] = {"kitty", "-e", "ncpamixer", NULL};
+
 static const char *locksession[] = {"loginctl", "lock-session", NULL};
 
 // static const char *websearch[] = {".config/rofi/scripts/websearch", NULL};
@@ -468,7 +475,8 @@ static char tagicons[][NUMTAGS][MAX_TAGLEN] =
 static char *tagicons[][NUMTAGS] =
 #endif // NAMETAG_PATCH
 {
-	[DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+	// [DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+	[DEFAULT_TAGS]          = { "一", "二", "三", "四", "五", "六", "七", "八", "九" },
 	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E", "F", "G", "H", "I" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -930,12 +938,18 @@ static const Key keys[] = {
   // {0, XF86XK_Search, spawn, {.v = search}},
   {0, XF86XK_LaunchA, alttabstart, {0}},
   {0, XF86XK_Explorer, spawn, {.v = explorer}},
-	{ MODKEY|Mod1Mask,              XK_F1,         spawn,                  {.v = upvol}},
-	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = downvol}},
-	{ MODKEY,                       XK_n,          spawn,                  {.v = explorer} },
+	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = upvol}},
+	{ MODKEY|Mod1Mask,              XK_F2,         spawn,                  {.v = downvol}},
+	{ MODKEY,                       XK_n,          spawn,                  {.v = nemo} },
+	{ MODKEY,                       XK_w,          spawn,                  {.v = editor} },
+	{ MODKEY,                       XK_e,          spawn,                  {.v = explorer} },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
 	{ 0,                            XK_Print,      spawn,                  {.v = prtscrcmd} },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = prtscrcmd} },
+  { MODKEY,                       XK_a,          spawn,                  {.v = spotify} },
+  { MODKEY,                       XK_s,          spawn,                  {.v = music} },
+  { MODKEY,                       XK_d,          spawn,                  {.v = audio} },
+  { MODKEY,                       XK_x,          spawn,                  {.v = mail} },
 	// { MODKEY,                       XK_z,          spawn,                  {.v = websearch} },
 	// { MODKEY,                       XK_semicolon,  spawn,                  {.v = emoji} },
 	{ MODKEY,                       XK_space,      spawn,                  {.v = launcher} },
