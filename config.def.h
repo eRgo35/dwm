@@ -164,45 +164,45 @@ static const char dmenufont[]            = "FiraCode Mono Nerd Font:size=11:anti
 
 static char c000000[]                    = "#000000"; // placeholder value
 
-static char normfgcolor[]                = "#cad3f5";
-static char normbgcolor[]                = "#24273a";
-static char normbordercolor[]            = "#494d64";
-static char normfloatcolor[]             = "#5b6078";
+static char normfgcolor[]                = "#ebdbb2";
+static char normbgcolor[]                = "#282828";
+static char normbordercolor[]            = "#3c3836";
+static char normfloatcolor[]             = "#504945";
 
 static char selfgcolor[]                 = "#181926";
 static char selbgcolor[]                 = "#ed8796";
 static char selbordercolor[]             = "#ee99a0";
 static char selfloatcolor[]              = "#ee99a0";
 
-static char titlenormfgcolor[]           = "#cad3f5";
-static char titlenormbgcolor[]           = "#24273a";
-static char titlenormbordercolor[]       = "#363a4f";
-static char titlenormfloatcolor[]        = "#c6a0f6";
+static char titlenormfgcolor[]           = "#ebdbb2";
+static char titlenormbgcolor[]           = "#282828";
+static char titlenormbordercolor[]       = "#3c3836";
+static char titlenormfloatcolor[]        = "#b16286";
 
-static char titleselfgcolor[]            = "#a6da95";
-static char titleselbgcolor[]            = "#363a4f";
-static char titleselbordercolor[]        = "#5b6078";
-static char titleselfloatcolor[]         = "#5b6078";
+static char titleselfgcolor[]            = "#fabd2f";
+static char titleselbgcolor[]            = "#282828";
+static char titleselbordercolor[]        = "#3c3836";
+static char titleselfloatcolor[]         = "#b8bb26";
 
-static char tagsnormfgcolor[]            = "#cad3f5";
-static char tagsnormbgcolor[]            = "#24273a";
-static char tagsnormbordercolor[]        = "#363a4f";
-static char tagsnormfloatcolor[]         = "#363a4f";
+static char tagsnormfgcolor[]            = "#ebdbb2";
+static char tagsnormbgcolor[]            = "#282828";
+static char tagsnormbordercolor[]        = "#3c3836";
+static char tagsnormfloatcolor[]         = "#3c3836";
 
-static char tagsselfgcolor[]             = "#a6da95";
-static char tagsselbgcolor[]             = "#181926";
-static char tagsselbordercolor[]         = "#eed49f";
-static char tagsselfloatcolor[]          = "#8bd5ca";
+static char tagsselfgcolor[]             = "#fabd2f";
+static char tagsselbgcolor[]             = "#282828";
+static char tagsselbordercolor[]         = "#3c3836";
+static char tagsselfloatcolor[]          = "#b8bb26";
 
-static char hidnormfgcolor[]             = "#5b6078";
-static char hidselfgcolor[]              = "#5b6078";
-static char hidnormbgcolor[]             = "#181926";
-static char hidselbgcolor[]              = "#181926";
+static char hidnormfgcolor[]             = "#504945";
+static char hidselfgcolor[]              = "#504945";
+static char hidnormbgcolor[]             = "#1d2021";
+static char hidselbgcolor[]              = "#1d2021";
 
-static char urgfgcolor[]                 = "#181926";
-static char urgbgcolor[]                 = "#ed8796";
-static char urgbordercolor[]             = "#ed8796";
-static char urgfloatcolor[]              = "#ed8796";
+static char urgfgcolor[]                 = "#1d2021";
+static char urgbgcolor[]                 = "#fb4934";
+static char urgbordercolor[]             = "#fb4934";
+static char urgfloatcolor[]              = "#fb4934";
 
 static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
 static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-3%", NULL};
@@ -938,8 +938,8 @@ static const Key keys[] = {
   // {0, XF86XK_Search, spawn, {.v = search}},
   {0, XF86XK_LaunchA, alttabstart, {0}},
   {0, XF86XK_Explorer, spawn, {.v = explorer}},
-	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = upvol}},
-	{ MODKEY|Mod1Mask,              XK_F2,         spawn,                  {.v = downvol}},
+	{ MODKEY|Mod1Mask,              XK_F1,         spawn,                  {.v = upvol}},
+	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = downvol}},
 	{ MODKEY,                       XK_n,          spawn,                  {.v = nemo} },
 	{ MODKEY,                       XK_w,          spawn,                  {.v = editor} },
 	{ MODKEY,                       XK_e,          spawn,                  {.v = explorer} },

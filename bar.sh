@@ -45,11 +45,11 @@ rosewater=#f4dbd6
 flamingo=#f0c6c6
 pink=#f5bde6
 mauve=#c6a0f6
-red=#ed8796
+red=#fb4934
 maroon=#ee99a0
 peach=#f5a97f
 yellow=#eed49f
-green=#a6da95
+green=#b8bb26
 teal=#8bd5ca
 sky=#91d7e3
 sapphire=#7dc4e4
@@ -69,9 +69,9 @@ mantle=#1e2030
 crust=#181926
 
 # Special
-background=#05090e
-foreground=#c0c1c2
-cursor=#c0c1c2
+background=#282828
+foreground=#ebdbb2
+cursor=#ebdbb2
 
 # Colors
 color0=#05090e
