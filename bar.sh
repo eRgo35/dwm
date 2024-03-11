@@ -156,7 +156,7 @@ today() {
 }
 
 net() {
-  if nc -zw1 google.com 443; then
+  if nc -zw1 c2yz.com 443; then
     printf "^c$background^^b$green^  i  "
   else
     printf "^c$background^^b$red^  !  "
