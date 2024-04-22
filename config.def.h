@@ -204,10 +204,10 @@ static char urgbgcolor[]                 = "#fb4934";
 static char urgbordercolor[]             = "#fb4934";
 static char urgfloatcolor[]              = "#fb4934";
 
-static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
-static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-3%", NULL};
-static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+3%", NULL};
-static const char *mutemic[] = {"/usr/bin/pactl", "set-source-mute", "0", "toggle", NULL};
+static const char *mutevol[] = {"pactl", "set-sink-mute", "0", "toggle", NULL};
+static const char *downvol[] = {"pactl", "set-sink-volume", "0", "-3%", NULL};
+static const char *upvol[] = {"pactl", "set-sink-volume", "0", "+3%", NULL};
+static const char *mutemic[] = {"pactl", "set-source-mute", "0", "toggle", NULL};
 static const char *downbrt[] = {"xbacklight", "-dec", "5", NULL};
 static const char *upbrt[] = {"xbacklight", "-inc", "5", NULL};
 static const char *displ[] = {"arandr", NULL};
