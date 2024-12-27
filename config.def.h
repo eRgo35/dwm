@@ -19,7 +19,7 @@ static const unsigned int borderpx       = 1;   /* border pixel of windows */
  * automatically update with setborderpx. */
 static const unsigned int barborderpx    = 0;  /* border pixel of bar */
 #endif // BAR_BORDER_PATCH
-static const unsigned int snap           = 32;  /* snap pixel */
+static const unsigned int snap           = 28;  /* snap pixel */
 #if SWALLOW_PATCH
 static const int swallowfloating         = 0;   /* 1 means swallow floating windows by default */
 #endif // SWALLOW_PATCH
@@ -62,7 +62,7 @@ static const int showtab                 = showtab_auto;        /* Default tab b
 static const int toptab                  = False;               /* False means bottom tab bar */
 #endif // TAB_PATCH
 #if BAR_HEIGHT_PATCH
-static const int bar_height              = 0;   /* 0 means derive from font, >= 1 explicit height */
+static const int bar_height              = 32;   /* 0 means derive from font, >= 1 explicit height */
 #endif // BAR_HEIGHT_PATCH
 #if BAR_PADDING_PATCH
 static const int vertpad                 = 10;  /* vertical padding of bar */
@@ -100,7 +100,7 @@ static const int horizpadbar             = 2;   /* horizontal padding for status
 static const int vertpadbar              = 0;   /* vertical padding for statusbar */
 #endif // BAR_STATUSPADDING_PATCH
 #if BAR_STATUSBUTTON_PATCH
-static const char buttonbar[]            = "<O>";
+static const char buttonbar[]            = "";
 #endif // BAR_STATUSBUTTON_PATCH
 #if BAR_SYSTRAY_PATCH
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -113,7 +113,7 @@ static const int lcaselbl = 0;                  /* 1 means make tag label lowerc
 #endif // BAR_TAGLABELS_PATCH
 #if BAR_UNDERLINETAGS_PATCH
 static const unsigned int ulinepad = 5;         /* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke  = 2;     /* thickness / height of the underline */
+static const unsigned int ulinestroke  = 4;     /* thickness / height of the underline */
 static const unsigned int ulinevoffset = 0;     /* how far above the bottom of the bar the line should appear */
 static const int ulineall = 0;                  /* 1 to show underline on all tags, 0 for just the active ones */
 #endif // BAR_UNDERLINETAGS_PATCH
@@ -166,26 +166,47 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[]                 = "monospace 10";
+static const char font[]                 = "monospace 11";
 #else
-static const char *fonts[]               = { "monospace:size=10" };
+static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=16:antialias=true", "monospace:size=16:antialias=true" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "monospace:size=10";
+static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=16:antialias=true";
+
+static char base                         = "#191724";
+static char surface                      = "#1f1d2e";
+static char overlay                      = "#26233a";
+                           
+static char muted                        = "#6e6a86";
+static char subtle                       = "#908caa";
+static char text                         = "#e0def4";
+                           
+static char love                         = "#eb6f92";
+static char gold                         = "#f6c177";
+static char rose                         = "#ebbcba";
+static char pine                         = "#31748f";
+static char foam                         = "#9ccfd8";
+static char iris                         = "#c4a7e7";
+                           
+static char highlightLow                 = "#21202e";
+static char highlightMed                 = "#403d52";
+static char highlightHigh                = "#524f67";
+
+
 
 static char c000000[]                    = "#000000"; // placeholder value
 
-static char normfgcolor[]                = "#bbbbbb";
-static char normbgcolor[]                = "#222222";
-static char normbordercolor[]            = "#444444";
-static char normfloatcolor[]             = "#db8fd9";
+static char normfgcolor[]                = text;
+static char normbgcolor[]                = surface;
+static char normbordercolor[]            = overlay;
+static char normfloatcolor[]             = highlightMed;
 
-static char selfgcolor[]                 = "#eeeeee";
+static char selfgcolor[]                 = ;
 static char selbgcolor[]                 = "#005577";
 static char selbordercolor[]             = "#005577";
 static char selfloatcolor[]              = "#005577";
 
 static char titlenormfgcolor[]           = "#bbbbbb";
-static char titlenormbgcolor[]           = "#222222";
+static char titlenormbgcolor[]           = "#1f1d2e";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
@@ -462,7 +483,8 @@ static char tagicons[][NUMTAGS][MAX_TAGLEN] =
 static char *tagicons[][NUMTAGS] =
 #endif // NAMETAG_PATCH
 {
-	[DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+	/*[DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },*/
+	[DEFAULT_TAGS]        = { "一", "二", "三", "四", "五", "六", "七", "八", "九" },
 	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E", "F", "G", "H", "I" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -779,13 +801,13 @@ static const Layout layouts[] = {
 #if XKB_PATCH
 /* xkb frontend */
 static const char *xkb_layouts[]  = {
+	"pl",
 	"en",
-	"ru",
 };
 #endif // XKB_PATCH
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
@@ -882,7 +904,35 @@ static const char *dmenucmd[] = {
 	#endif // BAR_DMENUMATCHTOP_PATCH
 	NULL
 };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
+static const char *prtscrcmd[] = { "flameshot", "gui", NULL };
+static const char *mutevol[] = {"pactl", "set-sink-mute", "0", "toggle", NULL};
+static const char *downvol[] = {"pactl", "set-sink-volume", "0", "-3%", NULL};
+static const char *upvol[] = {"pactl", "set-sink-volume", "0", "+3%", NULL};
+static const char *mutemic[] = {"pactl", "set-source-mute", "0", "toggle", NULL};
+static const char *downbrt[] = {"brightnessctl", "s", "5%-", NULL};
+static const char *upbrt[] = {"brightnessctl", "s", "5%+", NULL};
+static const char *displ[] = {"arandr", NULL};
+static const char *wlan[] = {"kitty", "-e", "nmtui", NULL};
+static const char *tools[] = {"lxappearance"};
+// static const char *search[] = {"rofi", "-show", "drun", NULL};
+// static const char *launcha[] = {alttabstart};
+static const char *nemo[] = {"nemo", NULL};
+static const char *explorer[] = {"kitty", "-e", "lf", NULL};
+static const char *editor[] = {"neovide", NULL};
+static const char *mail[] = {"kitty", "-e", "neomutt", NULL};
+static const char *music[] = {"kitty", "-e", "ncmpcpp", NULL};
+static const char *spotify[] = {"kitty", "-e", "ncspot", NULL};
+static const char *audio[] = {"kitty", "-e", "ncpamixer", NULL};
+
+static const char *locksession[] = {"loginctl", "lock-session", NULL};
+
+// static const char *websearch[] = {".config/rofi/scripts/websearch", NULL};
+// static const char *emoji[] = {".config/rofi/scripts/emoji", NULL};
+static const char *launcher[] = {"rofi", "-show", "drun", NULL};
+// static const char *wallpaper[] = {".config/rofi/scripts/wallpaper", NULL};
+// static const char *theme[] = {".config/rofi/scripts/theme", NULL};
+// static const char *powermenu[] = {".config/rofi/scripts/powermenu", NULL};
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -910,6 +960,36 @@ static const Key on_empty_keys[] = {
 
 static const Key keys[] = {
 	/* modifier                     key            function                argument */
+	{ 0,                            XF86XK_AudioMute,         spawn,       {.v = mutevol}},
+  { 0,                            XF86XK_AudioLowerVolume,  spawn,       {.v = downvol}},
+  { 0,                            XF86XK_AudioRaiseVolume,  spawn,       {.v = upvol}},
+  { 0,                            XF86XK_AudioMicMute,      spawn,       {.v = mutemic}},
+  { 0,                            XF86XK_MonBrightnessDown, spawn,       {.v = downbrt}},
+  { 0,                            XF86XK_MonBrightnessUp,   spawn,       {.v = upbrt}},
+  { 0,                            XF86XK_Display,           spawn,       {.v = displ}},
+  { 0,                            XF86XK_WLAN,              spawn,       {.v = wlan}},
+  { 0,                            XF86XK_Tools,             spawn,       {.v = tools}},
+  // { 0,                         XF86XK_Search,            spawn,       {.v = search}},
+  { 0,                            XF86XK_LaunchA,           alttabstart, {0}},
+  { 0,                            XF86XK_Explorer,          spawn,       {.v = explorer}},
+	{ MODKEY|Mod1Mask,              XK_F1,         spawn,                  {.v = upvol}},
+	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = downvol}},
+	{ MODKEY,                       XK_n,          spawn,                  {.v = nemo} },
+	{ MODKEY,                       XK_w,          spawn,                  {.v = editor} },
+	{ MODKEY,                       XK_e,          spawn,                  {.v = explorer} },
+	{ MODKEY|ShiftMask,             XK_l,          spawn,                  {.v = locksession} },
+	{ 0,                            XK_Print,      spawn,                  {.v = prtscrcmd} },
+	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = prtscrcmd} },
+  { MODKEY,                       XK_a,          spawn,                  {.v = spotify} },
+  { MODKEY,                       XK_s,          spawn,                  {.v = music} },
+  { MODKEY,                       XK_d,          spawn,                  {.v = audio} },
+  { MODKEY,                       XK_x,          spawn,                  {.v = mail} },
+	// { MODKEY,                    XK_z,          spawn,                  {.v = websearch} },
+	// { MODKEY,                    XK_semicolon,  spawn,                  {.v = emoji} },
+	{ MODKEY,                       XK_space,      spawn,                  {.v = launcher} },
+	// { MODKEY,                    XK_w,          spawn,                  {.v = wallpaper} },
+	// { MODKEY,                    XK_e,          spawn,                  {.v = theme} },
+	// { MODKEY,                    XK_x,          spawn,                  {.v = powermenu} },
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
