@@ -168,9 +168,9 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 11";
 #else
-static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=16:antialias=true", "monospace:size=16:antialias=true" };
+static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=11:antialias=true", "monospace:size=11:antialias=true" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=16:antialias=true";
+static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=11:antialias=true";
 
 #define BASE "#191724"
 #define SURFACE "#1f1d2e"
@@ -198,51 +198,51 @@ static char normbgcolor[]                = SURFACE;
 static char normbordercolor[]            = OVERLAY;
 static char normfloatcolor[]             = HIGHLIGHT_MED;
 
-static char selfgcolor[]                 = OVERLAY;
-static char selbgcolor[]                 = "#005577";
-static char selbordercolor[]             = "#005577";
-static char selfloatcolor[]              = "#005577";
+static char selfgcolor[]                 = TEXT;
+static char selbgcolor[]                 = PINE;
+static char selbordercolor[]             = PINE;
+static char selfloatcolor[]              = PINE;
 
-static char titlenormfgcolor[]           = "#bbbbbb";
-static char titlenormbgcolor[]           = "#1f1d2e";
-static char titlenormbordercolor[]       = "#444444";
-static char titlenormfloatcolor[]        = "#db8fd9";
+static char titlenormfgcolor[]           = SUBTLE;
+static char titlenormbgcolor[]           = SURFACE;
+static char titlenormbordercolor[]       = OVERLAY;
+static char titlenormfloatcolor[]        = ROSE;
 
-static char titleselfgcolor[]            = "#eeeeee";
-static char titleselbgcolor[]            = "#005577";
-static char titleselbordercolor[]        = "#005577";
-static char titleselfloatcolor[]         = "#005577";
+static char titleselfgcolor[]            = TEXT;
+static char titleselbgcolor[]            = PINE;
+static char titleselbordercolor[]        = PINE;
+static char titleselfloatcolor[]         = PINE;
 
-static char tagsnormfgcolor[]            = "#bbbbbb";
-static char tagsnormbgcolor[]            = "#222222";
-static char tagsnormbordercolor[]        = "#444444";
-static char tagsnormfloatcolor[]         = "#db8fd9";
+static char tagsnormfgcolor[]            = MUTED;
+static char tagsnormbgcolor[]            = BASE;
+static char tagsnormbordercolor[]        = OVERLAY;
+static char tagsnormfloatcolor[]         = ROSE;   
 
-static char tagsselfgcolor[]             = "#eeeeee";
-static char tagsselbgcolor[]             = "#005577";
-static char tagsselbordercolor[]         = "#005577";
-static char tagsselfloatcolor[]          = "#005577";
+static char tagsselfgcolor[]             = TEXT;
+static char tagsselbgcolor[]             = PINE;
+static char tagsselbordercolor[]         = PINE;
+static char tagsselfloatcolor[]          = PINE;
 
-static char hidnormfgcolor[]             = "#005577";
-static char hidselfgcolor[]              = "#227799";
-static char hidnormbgcolor[]             = "#222222";
-static char hidselbgcolor[]              = "#222222";
+static char hidnormfgcolor[]             = MUTED;
+static char hidselfgcolor[]              = SUBTLE;
+static char hidnormbgcolor[]             = BASE;
+static char hidselbgcolor[]              = BASE;
 
-static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#222222";
-static char urgbordercolor[]             = "#ff0000";
-static char urgfloatcolor[]              = "#db8fd9";
+static char urgfgcolor[]                 = TEXT;
+static char urgbgcolor[]                 = LOVE;
+static char urgbordercolor[]             = LOVE;
+static char urgfloatcolor[]              = ROSE;
 
 #if RENAMED_SCRATCHPADS_PATCH
-static char scratchselfgcolor[]          = "#FFF7D4";
-static char scratchselbgcolor[]          = "#77547E";
-static char scratchselbordercolor[]      = "#894B9F";
-static char scratchselfloatcolor[]       = "#894B9F";
+static char scratchselfgcolor[]          = TEXT;
+static char scratchselbgcolor[]          = IRIS;
+static char scratchselbordercolor[]      = IRIS;
+static char scratchselfloatcolor[]       = IRIS;
 
-static char scratchnormfgcolor[]         = "#FFF7D4";
-static char scratchnormbgcolor[]         = "#664C67";
-static char scratchnormbordercolor[]     = "#77547E";
-static char scratchnormfloatcolor[]      = "#77547E";
+static char scratchnormfgcolor[]         = SUBTLE;
+static char scratchnormbgcolor[]         = HIGHLIGHT_LOW;
+static char scratchnormbordercolor[]     = OVERLAY;
+static char scratchnormfloatcolor[]      = OVERLAY;
 #endif // RENAMED_SCRATCHPADS_PATCH
 
 #if BAR_FLEXWINTITLE_PATCH
@@ -1034,14 +1034,14 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_v,          switchcol,              {0} },
 	#endif // SWITCHCOL_PATCH
 	#if ROTATESTACK_PATCH
-	{ MODKEY|Mod4Mask,              XK_j,          rotatestack,            {.i = +1 } },
-	{ MODKEY|Mod4Mask,              XK_k,          rotatestack,            {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_j,          rotatestack,            {.i = +1 } },
+	{ MODKEY|Mod1Mask,              XK_k,          rotatestack,            {.i = -1 } },
 	#endif // ROTATESTACK_PATCH
 	#if INPLACEROTATE_PATCH
-	{ MODKEY|Mod4Mask,              XK_j,          inplacerotate,          {.i = +2 } }, // same as rotatestack
-	{ MODKEY|Mod4Mask,              XK_k,          inplacerotate,          {.i = -2 } }, // same as reotatestack
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_j,          inplacerotate,          {.i = +1} },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_k,          inplacerotate,          {.i = -1} },
+	{ MODKEY|Mod1Mask,              XK_j,          inplacerotate,          {.i = +2 } }, // same as rotatestack
+	{ MODKEY|Mod1Mask,              XK_k,          inplacerotate,          {.i = -2 } }, // same as reotatestack
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_j,          inplacerotate,          {.i = +1} },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_k,          inplacerotate,          {.i = -1} },
 	#endif // INPLACEROTATE_PATCH
 	#if PUSH_PATCH || PUSH_NO_MASTER_PATCH
 	{ MODKEY|ControlMask,           XK_j,          pushdown,               {0} },
@@ -1065,14 +1065,14 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask, XK_r,          aspectresize,           {.i = -24} },
 	#endif // ASPECTRESIZE_PATCH
 	#if MOVERESIZE_PATCH
-	{ MODKEY|Mod4Mask,              XK_Down,       moveresize,             {.v = "0x 25y 0w 0h" } },
-	{ MODKEY|Mod4Mask,              XK_Up,         moveresize,             {.v = "0x -25y 0w 0h" } },
-	{ MODKEY|Mod4Mask,              XK_Right,      moveresize,             {.v = "25x 0y 0w 0h" } },
-	{ MODKEY|Mod4Mask,              XK_Left,       moveresize,             {.v = "-25x 0y 0w 0h" } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_Down,       moveresize,             {.v = "0x 0y 0w 25h" } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_Up,         moveresize,             {.v = "0x 0y 0w -25h" } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_Right,      moveresize,             {.v = "0x 0y 25w 0h" } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_Left,       moveresize,             {.v = "0x 0y -25w 0h" } },
+	{ MODKEY|Mod1Mask,              XK_Down,       moveresize,             {.v = "0x 25y 0w 0h" } },
+	{ MODKEY|Mod1Mask,              XK_Up,         moveresize,             {.v = "0x -25y 0w 0h" } },
+	{ MODKEY|Mod1Mask,              XK_Right,      moveresize,             {.v = "25x 0y 0w 0h" } },
+	{ MODKEY|Mod1Mask,              XK_Left,       moveresize,             {.v = "-25x 0y 0w 0h" } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_Down,       moveresize,             {.v = "0x 0y 0w 25h" } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_Up,         moveresize,             {.v = "0x 0y 0w -25h" } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_Right,      moveresize,             {.v = "0x 0y 25w 0h" } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_Left,       moveresize,             {.v = "0x 0y -25w 0h" } },
 	#endif // MOVERESIZE_PATCH
 	#if MOVESTACK_PATCH
 	{ MODKEY|ShiftMask,             XK_j,          movestack,              {.i = +1 } },
@@ -1095,22 +1095,22 @@ static const Key keys[] = {
 	#endif // INSETS_PATCH
 	{ MODKEY,                       XK_Return,     zoom,                   {0} },
 	#if VANITYGAPS_PATCH
-	{ MODKEY|Mod4Mask,              XK_u,          incrgaps,               {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_u,          incrgaps,               {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_i,          incrigaps,              {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_i,          incrigaps,              {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_o,          incrogaps,              {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,          incrogaps,              {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_6,          incrihgaps,             {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_6,          incrihgaps,             {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_7,          incrivgaps,             {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_7,          incrivgaps,             {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_8,          incrohgaps,             {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_8,          incrohgaps,             {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_9,          incrovgaps,             {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,          incrovgaps,             {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_0,          togglegaps,             {0} },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,          defaultgaps,            {0} },
+	{ MODKEY|Mod1Mask,              XK_u,          incrgaps,               {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_u,          incrgaps,               {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_i,          incrigaps,              {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_i,          incrigaps,              {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_o,          incrogaps,              {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_o,          incrogaps,              {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_6,          incrihgaps,             {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_6,          incrihgaps,             {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_7,          incrivgaps,             {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_7,          incrivgaps,             {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_8,          incrohgaps,             {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_8,          incrohgaps,             {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_9,          incrovgaps,             {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_9,          incrovgaps,             {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_0,          togglegaps,             {0} },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_0,          defaultgaps,            {0} },
 	#endif // VANITYGAPS_PATCH
 	#if ALT_TAB_PATCH
 	{ Mod1Mask,                     XK_Tab,        alttabstart,            {0} },
@@ -1130,21 +1130,22 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_backslash,  shiftview,              { .i = +1 } },
 	#endif // SHIFTVIEW_PATCH
 	#if SHIFTVIEW_CLIENTS_PATCH
-	{ MODKEY|Mod4Mask,              XK_Tab,        shiftviewclients,       { .i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_backslash,  shiftviewclients,       { .i = +1 } },
+	{ MODKEY|Mod1Mask,              XK_Tab,        shiftviewclients,       { .i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_backslash,  shiftviewclients,       { .i = +1 } },
 	#endif // SHIFTVIEW_CLIENTS_PATCH
 	#if SHIFTBOTH_PATCH
 	{ MODKEY|ControlMask,           XK_Left,       shiftboth,              { .i = -1 } }, // note keybinding conflict with focusadjacenttag tagandviewtoleft placedir
 	{ MODKEY|ControlMask,           XK_Right,      shiftboth,              { .i = +1 } }, // note keybinding conflict with focusadjacenttag tagandviewtoright placedir
 	#endif // SHIFTBOTH_PATCH
 	#if SHIFTSWAPTAGS_PATCH && SWAPTAGS_PATCH
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_Left,       shiftswaptags,          { .i = -1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_Right,      shiftswaptags,          { .i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_Left,       shiftswaptags,          { .i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_Right,      shiftswaptags,          { .i = +1 } },
 	#endif // SHIFTSWAPTAGS_PATCH
 	#if BAR_WINTITLEACTIONS_PATCH
 	{ MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
 	#endif // BAR_WINTITLEACTIONS_PATCH
 	{ MODKEY|ShiftMask,             XK_c,          killclient,             {0} },
+	{ MODKEY,                       XK_q,          killclient,             {0} },
 	#if KILLUNSEL_PATCH
 	{ MODKEY|ShiftMask,             XK_x,          killunsel,              {0} },
 	#endif // KILLUNSEL_PATCH
@@ -1206,7 +1207,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_grave,      removescratch,          {.ui = 0 } },
 	#endif // SCRATCHPADS_PATCH | RENAMED_SCRATCHPADS_PATCH
 	#if UNFLOATVISIBLE_PATCH
-	{ MODKEY|Mod4Mask,              XK_space,      unfloatvisible,         {0} },
+	{ MODKEY|Mod1Mask,              XK_space,      unfloatvisible,         {0} },
 	{ MODKEY|ShiftMask,             XK_t,          unfloatvisible,         {.v = &layouts[0]} },
 	#endif // UNFLOATVISIBLE_PATCH
 	#if TOGGLEFULLSCREEN_PATCH
@@ -1265,12 +1266,12 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_F9,         tagall,                 {.v = "9"} },
 	#endif // TAGALL_PATCH
 	#if TAGALLMON_PATCH
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_comma,      tagallmon,              {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_period,     tagallmon,              {.i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_comma,      tagallmon,              {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_period,     tagallmon,              {.i = -1 } },
 	#endif // TAGALLMON_PATCH
 	#if TAGSWAPMON_PATCH
-	{ MODKEY|Mod4Mask|ControlMask,  XK_comma,      tagswapmon,             {.i = +1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_period,     tagswapmon,             {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,  XK_comma,      tagswapmon,             {.i = +1 } },
+	{ MODKEY|Mod1Mask|ControlMask,  XK_period,     tagswapmon,             {.i = -1 } },
 	#endif // TAGSWAPMON_PATCH
 	#if BAR_ALTERNATIVE_TAGS_PATCH
 	{ MODKEY,                       XK_n,          togglealttag,           {0} },
@@ -1283,10 +1284,10 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_Down,       switchtag,              { .ui = SWITCHTAG_DOWN  | SWITCHTAG_VIEW } },
 	{ MODKEY|ControlMask,           XK_Right,      switchtag,              { .ui = SWITCHTAG_RIGHT | SWITCHTAG_VIEW } }, // note keybinding conflict with placedir
 	{ MODKEY|ControlMask,           XK_Left,       switchtag,              { .ui = SWITCHTAG_LEFT  | SWITCHTAG_VIEW } }, // note keybinding conflict with placedir
-	{ MODKEY|Mod4Mask,              XK_Up,         switchtag,              { .ui = SWITCHTAG_UP    | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
-	{ MODKEY|Mod4Mask,              XK_Down,       switchtag,              { .ui = SWITCHTAG_DOWN  | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
-	{ MODKEY|Mod4Mask,              XK_Right,      switchtag,              { .ui = SWITCHTAG_RIGHT | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
-	{ MODKEY|Mod4Mask,              XK_Left,       switchtag,              { .ui = SWITCHTAG_LEFT  | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
+	{ MODKEY|Mod1Mask,              XK_Up,         switchtag,              { .ui = SWITCHTAG_UP    | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
+	{ MODKEY|Mod1Mask,              XK_Down,       switchtag,              { .ui = SWITCHTAG_DOWN  | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
+	{ MODKEY|Mod1Mask,              XK_Right,      switchtag,              { .ui = SWITCHTAG_RIGHT | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
+	{ MODKEY|Mod1Mask,              XK_Left,       switchtag,              { .ui = SWITCHTAG_LEFT  | SWITCHTAG_TAG | SWITCHTAG_VIEW } },
 	#endif // BAR_TAGGRID_PATCH
 	#if MOVEPLACE_PATCH
 	{ MODKEY,                       XK_KP_7,       moveplace,              {.ui = WIN_NW }},   /* XK_KP_Home,  */
