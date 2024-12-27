@@ -14,7 +14,7 @@
         xorg.libXinerama
       ];
 
-      makeFlags = [ "CC=${pkgs.gcc}/bin/gcc" ];
+      makeFlags = [ "CC=${pkgs.gcc}/bin/cc" ];
 
       installPhase = ''
         mkdir -p $out/bin

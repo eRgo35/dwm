@@ -172,35 +172,33 @@ static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=16:an
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=16:antialias=true";
 
-static char base[]                       = "#191724";
-static char surface[]                    = "#1f1d2e";
-static char overlay[]                    = "#26233a";
-                           
-static char muted[]                      = "#6e6a86";
-static char subtle[]                     = "#908caa";
-static char text[]                       = "#e0def4";
-                           
-static char love[]                       = "#eb6f92";
-static char gold[]                       = "#f6c177";
-static char rose[]                       = "#ebbcba";
-static char pine[]                       = "#31748f";
-static char foam[]                       = "#9ccfd8";
-static char iris[]                       = "#c4a7e7";
-                           
-static char highlightLow[]               = "#21202e";
-static char highlightMed[]               = "#403d52";
-static char highlightHigh[]              = "#524f67";
+#define BASE "#191724"
+#define SURFACE "#1f1d2e"
+#define OVERLAY "#26233a"
 
+#define MUTED "#6e6a86"
+#define SUBTLE "#908caa"
+#define TEXT "#e0def4"
 
+#define LOVE "#eb6f92"
+#define GOLD "#f6c177"
+#define ROSE "#ebbcba"
+#define PINE "#31748f"
+#define FOAM "#9ccfd8"
+#define IRIS "#c4a7e7"
+
+#define HIGHLIGHT_LOW "#21202e"
+#define HIGHLIGHT_MED "#403d52"
+#define HIGHLIGHT_HIGH "#524f67"
 
 static char c000000[]                    = "#000000"; // placeholder value
 
-static char normfgcolor[]                = text;
-static char normbgcolor[]                = surface;
-static char normbordercolor[]            = overlay;
-static char normfloatcolor[]             = highlightMed;
+static char normfgcolor[]                = TEXT;
+static char normbgcolor[]                = SURFACE;
+static char normbordercolor[]            = OVERLAY;
+static char normfloatcolor[]             = HIGHLIGHT_MED;
 
-static char selfgcolor[]                 = ;
+static char selfgcolor[]                 = OVERLAY;
 static char selbgcolor[]                 = "#005577";
 static char selbordercolor[]             = "#005577";
 static char selfloatcolor[]              = "#005577";
@@ -970,7 +968,7 @@ static const Key keys[] = {
   { 0,                            XF86XK_WLAN,              spawn,       {.v = wlan}},
   { 0,                            XF86XK_Tools,             spawn,       {.v = tools}},
   // { 0,                         XF86XK_Search,            spawn,       {.v = search}},
-  { 0,                            XF86XK_LaunchA,           alttabstart, {0}},
+  /*{ 0,                            XF86XK_LaunchA,           alttabstart, {0}},*/
   { 0,                            XF86XK_Explorer,          spawn,       {.v = explorer}},
 	{ MODKEY|Mod1Mask,              XK_F1,         spawn,                  {.v = upvol}},
 	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = downvol}},
