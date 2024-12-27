@@ -172,24 +172,24 @@ static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=16:an
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=16:antialias=true";
 
-static char base                         = "#191724";
-static char surface                      = "#1f1d2e";
-static char overlay                      = "#26233a";
+static char base[]                       = "#191724";
+static char surface[]                    = "#1f1d2e";
+static char overlay[]                    = "#26233a";
                            
-static char muted                        = "#6e6a86";
-static char subtle                       = "#908caa";
-static char text                         = "#e0def4";
+static char muted[]                      = "#6e6a86";
+static char subtle[]                     = "#908caa";
+static char text[]                       = "#e0def4";
                            
-static char love                         = "#eb6f92";
-static char gold                         = "#f6c177";
-static char rose                         = "#ebbcba";
-static char pine                         = "#31748f";
-static char foam                         = "#9ccfd8";
-static char iris                         = "#c4a7e7";
+static char love[]                       = "#eb6f92";
+static char gold[]                       = "#f6c177";
+static char rose[]                       = "#ebbcba";
+static char pine[]                       = "#31748f";
+static char foam[]                       = "#9ccfd8";
+static char iris[]                       = "#c4a7e7";
                            
-static char highlightLow                 = "#21202e";
-static char highlightMed                 = "#403d52";
-static char highlightHigh                = "#524f67";
+static char highlightLow[]               = "#21202e";
+static char highlightMed[]               = "#403d52";
+static char highlightHigh[]              = "#524f67";
 
 
 
