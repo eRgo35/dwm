@@ -5,4 +5,4 @@ config.h
 patches.h
 .legacy/
 .direnv/
-result/
+result
