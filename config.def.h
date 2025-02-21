@@ -970,6 +970,7 @@ static const Key keys[] = {
   // { 0,                         XF86XK_Search,            spawn,       {.v = search}},
   /*{ 0,                            XF86XK_LaunchA,           alttabstart, {0}},*/
   { 0,                            XF86XK_Explorer,          spawn,       {.v = explorer}},
+
 	{ MODKEY|Mod1Mask,              XK_F1,         spawn,                  {.v = upvol}},
 	{ MODKEY|Mod1Mask,              XK_F3,         spawn,                  {.v = downvol}},
 	{ MODKEY,                       XK_n,          spawn,                  {.v = nemo} },
@@ -1429,6 +1430,9 @@ static const Command commands[] = {
 #endif //
 static const Button buttons[] = {
 	/* click                event mask           button          function        argument */
+  { ClkRootWin,           0,                   Button9,        spawn,          {.v = upvol } },
+  { ClkRootWin,           0,                   Button8,        spawn,          {.v = downvol } },
+  { ClkRootWin,           0,                   Button6,        spawn,          {.v = mutevol } },
 	#if BAR_STATUSBUTTON_PATCH
 	{ ClkButton,            0,                   Button1,        spawn,          {.v = dmenucmd } },
 	#endif // BAR_STATUSBUTTON_PATCH
