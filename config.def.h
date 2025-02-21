@@ -1422,6 +1422,12 @@ static const Command commands[] = {
 };
 #endif // KEYMODES_PATCH
 
+
+#define Button6  6
+#define Button7  7
+#define Button8  8
+#define Button9  9
+
 /* button definitions */
 #if STATUSBUTTON_PATCH
 /* click can be ClkButton, ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */

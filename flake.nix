@@ -28,6 +28,8 @@
       };
     };
 
+    defaultPackage.${system} = self.packages.${system}.dwm;
+
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
         gnumake
