@@ -84,21 +84,23 @@ get_brightness() {
 # Function to get weighted average battery level
 get_battery_level() {
     # Get battery levels (adjust paths if needed)
-    battery0_level=$(cat /sys/class/power_supply/BAT0/capacity)
-    battery1_level=$(cat /sys/class/power_supply/BAT1/capacity)
+    # battery0_level=$(cat /sys/class/power_supply/BAT0/capacity)
+    # battery1_level=$(cat /sys/class/power_supply/BAT1/capacity)
 
-    battery0_energy_full=$(cat /sys/class/power_supply/BAT0/energy_full)
-    battery1_energy_full=$(cat /sys/class/power_supply/BAT1/energy_full)
+    # battery0_energy_full=$(cat /sys/class/power_supply/BAT0/energy_full)
+    # battery1_energy_full=$(cat /sys/class/power_supply/BAT1/energy_full)
     
     # Calculate weights based on energy capacity 
-    weight0=$(awk "BEGIN {printf \"%.2f\", $battery0_energy_full / ($battery0_energy_full + $battery1_energy_full)}")
-    weight1=$(awk "BEGIN {printf \"%.2f\", $battery1_energy_full / ($battery0_energy_full + $battery1_energy_full)}")
+    # weight0=$(awk "BEGIN {printf \"%.2f\", $battery0_energy_full / ($battery0_energy_full + $battery1_energy_full)}")
+    # weight1=$(awk "BEGIN {printf \"%.2f\", $battery1_energy_full / ($battery0_energy_full + $battery1_energy_full)}")
     
     # Calculate weighted average
-    weighted_avg=$(awk "BEGIN {printf \"%.0f%%\", ($battery0_level * $weight0 + $battery1_level * $weight1)}")
-    
+    # weighted_avg=$(awk "BEGIN {printf \"%.0f%%\", ($battery0_level * $weight0 + $battery1_level * $weight1)}")
+    battery0_level=$(cat /sys/class/power_supply/BAT0/capacity)
+    echo "^c$LOVE^BAT: $battery0_level%"
+
     # Output the result with color
-    echo "^c$LOVE^BAT: $weighted_avg"
+    # echo "^c$LOVE^BAT: $weighted_avg"
 }
 
 # Function to get date and time in American 12-hour format
