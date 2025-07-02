@@ -1,24 +1,97 @@
 #!/usr/bin/env bash
 
-# Rosé Pine color palette
-BASE=#191724
-SURFACE=#1f1d2e
-OVERLAY=#26233a
+# Global variables for theme tracking
+CURRENT_THEME=""
+THEME_FILE="$HOME/.current_theme"
+LAST_MTIME=0
 
-MUTED=#6e6a86
-SUBTLE=#908caa
-TEXT=#e0def4
+# Function to read current theme from file
+get_current_theme() {
+    if [ -f "$THEME_FILE" ]; then
+        cat "$THEME_FILE" 2>/dev/null || echo "dark"
+    else
+        echo "dark"  # default to dark theme
+    fi
+}
 
-LOVE=#eb6f92
-GOLD=#f6c177
-ROSE=#ebbcba
-PINE=#31748f
-FOAM=#9ccfd8
-IRIS=#c4a7e7
+# Function to check if theme file has been modified
+theme_file_changed() {
+    if [ -f "$THEME_FILE" ]; then
+        local current_mtime=$(stat -c %Y "$THEME_FILE" 2>/dev/null || echo 0)
+        if [ "$current_mtime" -gt "$LAST_MTIME" ]; then
+            LAST_MTIME="$current_mtime"
+            return 0  # File was modified
+        fi
+    fi
+    return 1  # No change
+}
 
-HIGHLIGHT_LOW=#21202e
-HIGHLIGHT_MED=#403d52
-HIGHLIGHT_HIGH=#524f67
+# Function to update theme if changed
+update_theme_if_changed() {
+    if theme_file_changed; then
+        local new_theme=$(get_current_theme)
+        if [ "$new_theme" != "$CURRENT_THEME" ]; then
+            CURRENT_THEME="$new_theme"
+            set_colors
+            echo "Bar theme changed to: $CURRENT_THEME" >&2
+            return 0  # Theme was updated
+        fi
+    fi
+    return 1  # No update
+}
+
+# Function to set color palette based on theme
+set_colors() {
+    if [ "$CURRENT_THEME" = "light" ]; then
+        # Rosé Pine Dawn (light) color palette
+        BASE=#faf4ed
+        SURFACE=#fffaf3
+        OVERLAY=#f2e9e1
+
+        MUTED=#9893a5
+        SUBTLE=#797593
+        TEXT=#575279
+
+        LOVE=#b4637a
+        GOLD=#ea9d34
+        ROSE=#d7827e
+        PINE=#286983
+        FOAM=#56949f
+        IRIS=#907aa9
+
+        HIGHLIGHT_LOW=#f4ede8
+        HIGHLIGHT_MED=#dfdad9
+        HIGHLIGHT_HIGH=#cecacd
+    else
+        # Rosé Pine (dark) color palette - default
+        BASE=#191724
+        SURFACE=#1f1d2e
+        OVERLAY=#26233a
+
+        MUTED=#6e6a86
+        SUBTLE=#908caa
+        TEXT=#e0def4
+
+        LOVE=#eb6f92
+        GOLD=#f6c177
+        ROSE=#ebbcba
+        PINE=#31748f
+        FOAM=#9ccfd8
+        IRIS=#c4a7e7
+
+        HIGHLIGHT_LOW=#21202e
+        HIGHLIGHT_MED=#403d52
+        HIGHLIGHT_HIGH=#524f67
+    fi
+}
+
+# Initialize theme
+CURRENT_THEME=$(get_current_theme)
+if [ -f "$THEME_FILE" ]; then
+    LAST_MTIME=$(stat -c %Y "$THEME_FILE" 2>/dev/null || echo 0)
+fi
+set_colors
+echo "Bar started with theme: $CURRENT_THEME" >&2
 
 # Function to get CPU usage
 get_cpu_usage() {
@@ -119,6 +192,9 @@ is_laptop() {
 
 # Main loop to update xsetroot
 while true; do
+    # Check for theme changes on every iteration
+    update_theme_if_changed
+    
     # Combine all status components
     if is_laptop; then
         # Include battery and brightness for laptops
