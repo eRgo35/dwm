@@ -83,6 +83,37 @@ get_brightness() {
 
 # Function to get weighted average battery level
 get_battery_level() {
+    BAT_PATHS=(/sys/class/power_supply/BAT*)
+
+    total_now=0 
+    total_full=0 
+
+    for BAT in "${BAT_PATHS[@]}"; do 
+      if [[ -f "$BAT/energy_now" && -f "$BAT/energy_full" ]]; then
+        now=$(<"$BAT/energy_now")
+        full=$(<"$BAT/energy_full")
+      elif [[ -f "$BAT/charge_now" && -f "$BAT/charge_full" ]]; then
+        now=$(<"$BAT/charge_now")
+        full=$(<"$BAT/charge_full")
+      else
+        continue
+      fi 
+
+      total_now=$((total_now + now))
+      total_full=$((total_full + full))
+    done
+
+    if [[ $total_full -eq 0 ]]; then
+      percent=0
+    else
+      percent=$((100 * total_now / total_full))
+    fi  
+
+    if (( percent < 15 )); then 
+      echo "^c$TEXT^^b$LOVE^BAT: $percent%^b$BASE^"
+    else
+      echo "^c$LOVE^BAT: $percent%"
+    fi
     # Get battery levels (adjust paths if needed)
     # battery0_level=$(cat /sys/class/power_supply/BAT0/capacity)
     # battery1_level=$(cat /sys/class/power_supply/BAT1/capacity)
@@ -96,8 +127,8 @@ get_battery_level() {
     
     # Calculate weighted average
     # weighted_avg=$(awk "BEGIN {printf \"%.0f%%\", ($battery0_level * $weight0 + $battery1_level * $weight1)}")
-    battery0_level=$(cat /sys/class/power_supply/BAT0/capacity)
-    echo "^c$LOVE^BAT: $battery0_level%"
+    # battery0_level=$(cat /sys/class/power_supply/BAT0/capacity)
+    # echo "^c$LOVE^BAT: $battery0_level%"
 
     # Output the result with color
     # echo "^c$LOVE^BAT: $weighted_avg"
