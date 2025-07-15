@@ -912,9 +912,6 @@ static const Layout layouts[] = {
 #if TILE_LAYOUT
     {"[]=", tile}, /* first entry is default */
 #endif
-#if MONOCLE_LAYOUT
-    {"[M]", monocle},
-#endif
 #if BSTACK_LAYOUT
     {"TTT", bstack},
 #endif
@@ -950,6 +947,9 @@ static const Layout layouts[] = {
 #endif
 #if NROWGRID_LAYOUT
     {"###", nrowgrid},
+#endif
+#if MONOCLE_LAYOUT
+    {"[M]", monocle},
 #endif
     {"><>", NULL}, /* no layout function means floating behavior */
 };
